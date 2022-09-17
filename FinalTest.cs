@@ -54,7 +54,7 @@ void PrintArray(string[] array)
     Console.WriteLine();
 }
 
-string[] GetArray (string input)
+string[] GetArray(string input)
 {
     input = RemoveExcessSplittersAndSpaces(input, ',');
     int size = CountSplitters(input, ',');
@@ -63,7 +63,23 @@ string[] GetArray (string input)
     return result;
 }
 
+int[] GetNewLengthes(string[] array)
+{
+    int[] result = new int[array.Length];
+    for (int i = 0; i < result.Length; i++)
+        if (array[i].Length < 3)
+            result[i] = new Random().Next(0, array[i].Length);
+        else
+            result[i] = new Random().Next(0, 4);
+    return result;
+}
 
+void PrintIntArray(int[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+        Console.Write($"{array[i]} ");
+    Console.WriteLine();
+}
 
 /*------------------MAIN-----------------------------*/
 Console.Clear();
@@ -72,3 +88,5 @@ Console.Clear();
 string a = ReadString("A!");
 string[] aArray = GetArray(a);
 PrintArray(aArray);
+int[] aL = GetNewLengthes(aArray);
+PrintIntArray(aL);
