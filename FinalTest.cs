@@ -81,12 +81,32 @@ void PrintIntArray(int[] array)
     Console.WriteLine();
 }
 
+
+string[] TransformArray(string[] initialArray, int[] newLengthes)
+{
+    string[] result = new string[initialArray.Length];
+    for (int i = 0; i < result.Length; i++)
+    {
+        if (newLengthes[i] == 0)
+            result[i] = String.Empty;
+        else
+        {
+            int startIndex = new Random().Next
+                    (0, initialArray[i].Length - newLengthes[i]);
+            result[i] = initialArray[i].Substring(startIndex, newLengthes[i]);
+        }
+    }
+    return result;
+}
+
 /*------------------MAIN-----------------------------*/
 Console.Clear();
 
 
-string a = ReadString("A!");
-string[] aArray = GetArray(a);
-PrintArray(aArray);
-int[] aL = GetNewLengthes(aArray);
-PrintIntArray(aL);
+string input = ReadString("Введите элементы массива через запятую: ");
+string[] inputArray = GetArray(input);
+PrintArray(inputArray);
+int[] newLengthes = GetNewLengthes(inputArray);
+PrintIntArray(newLengthes);
+PrintArray(
+            TransformArray(inputArray, newLengthes));
